@@ -26,8 +26,16 @@ By making use of NASA’s Mars Rover Image API available at https://api.nasa.gov
 
 This data is stored in the current session and then displayed on the ‘display.html’ page. Images are organized by rover camera and if more than 20 images from a single camera are available, a subset of images is presented and a link to access all images from that camera provided and those images are displayed in ‘viewall.html’.
 All images are accompanied by an ‘Add to Gallery’ button. If the user is not logged in, they will be prompted to do so upon clicking this button. If the user is logged in, it will add the img_src of the image as well as the rover name, camera name, sol, earth date, current date and time, and user ID to the ‘gallery’ table in mars.db.
+
 When the ‘Gallery’ option is selected, the user, again, is prompted to login if they are not, and if they are, it displays all images they have saved to their gallery. This is done by querying the gallery table in mars.db for all rows that match the current session’s user ID. The result is then used to populate a table using the ‘img_src’ field in the table to display images. Other data fields populate the text telling the user which rover, sol, camera and earth date the image is from.
 
 In addition to providing images and a personal gallery to users, the ‘learn’ section embeds a number of assets from NASA’s archives to let users learn more about the Red Planet. This includes videos, as well as a stream of the current weather on Mars and the current status of the Mars 2020 mission.
 
-This completes the summary of the Red Planet Rover app and site for CS50’s final project. Thank you and enjoy exploring the Red Planet!
+### Screenshots
+![Landing Page](./static/images/readme_images/landing_screenshot.png)
+
+![Search Page](./static/images/readme_images/search_screenshot.png)
+
+![Results Page](./static/images/readme_images/results_screenshot.png)
+
+![Learn Page](./static/images/readme_images/learn_screenshot.png)
