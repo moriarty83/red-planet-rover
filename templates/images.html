@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+    Rover Images
+{% endblock %}
+
+
+
+{% block main %}
+
+
+    <table width = 90% class="table table-dark">
+        <thead class="thead-dark">
+        <tr>
+        <th colspan="3">Lookup Images</th>
+        </tr>
+        </thead>
+
+        <thead class="thead-dark">
+        <th> Spirit</th>
+        <th> Opportunity </th>
+        <th> Curiosity </th>
+        </thead>
+
+
+
+        <tr>
+        <td><img src = "static/images/spirit.jpg" alt = "Spirit Rover Diagram" width = 200px></td>
+        <td><img src = "static/images/opportunity.jpg" alt = "Opportunity Rover Diagram" width = 200px></td>
+        <td><img src = "static/images/curiosity.jpg" alt = "Curiosity Rover Diagram" width = 200px></td>
+        </tr>
+
+        <tr>
+            <td>
+                Max Sol: {{ spiritManifest["max_sol"] }}
+                <br>
+                Landed On: {{ spiritManifest["landing_date"] }}
+                <br>
+                Last Date: {{ spiritManifest["max_date"] }}
+            </td>
+
+            <td>
+                Max Sol: {{ opportunityManifest["max_sol"] }}
+                <br>
+                Landed On: {{ opportunityManifest["landing_date"] }}
+                <br>
+                Last Date: {{ opportunityManifest["max_date"] }}
+            </td>
+
+            <td>
+                Max Sol: {{ curiosityManifest["max_sol"] }}
+                <br>
+                Landed On: {{ curiosityManifest["landing_date"] }}
+                <br>
+                Last Date: {{ curiosityManifest["max_date"] }}
+            </td>
+        </tr>
+
+        <tr>
+        <td>
+            <form action="/images" method="POST">
+                <div class="form-group">
+                    Sol
+                    <br>
+                    <input autocomplete="off" autofocus class="form-control" name="input" placeholder="Input Sol" type="number">
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" type="submit" name ="submit" value="spirit">Get Images by Sol</button>
+                    <input type="hidden" name="action" value="Sol">
+                </div>
+
+            </form>
+        </td>
+        <td>
+            <form action="/images" method="POST">
+                <div class="form-group">
+                    Sol
+                    <br>
+                    <input autocomplete="off" autofocus class="form-control" name="input" placeholder="Input Sol" type="number">
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" type="submit" name = "submit" value="opportunity">Get Images by Sol</button>
+                    <input type="hidden" name="action" value="Sol">
+
+                </div>
+
+            </form>
+        </td>
+        <td>
+            <form action="/images" method="POST">
+                <div class="form-group">
+                    Sol
+                    <br>
+                    <input autocomplete="off" autofocus class="form-control" name="input" placeholder="Input Sol" type="number">
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" type="submit" name = "submit" value="curiosity">Get Images by Sol</button></div>
+                    <input type="hidden" name="action" value="Sol">
+                </div>
+
+            </form>
+        </td>
+        </tr>
+
+        <tr>
+                    <td>
+            <form action="/images" method="POST">
+                <div class="form-group">
+                    Earth Date
+                    <br>
+                    <input type="date" id="start" name="input" value={{ spiritManifest["landing_date"] }} min={{ spiritManifest["landing_date"] }} max={{ spiritManifest["max_date"] }}>
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" type="submit" name = "submit" value="spirit">Get Images by Earth Date</button>
+                    <input type="hidden" name="action" value="earthDate">
+                </div>
+
+            </form>
+        </td>
+        <td>
+            <form action="/images" method="POST">
+                <div class="form-group">
+                    Earth Date
+                    <br>
+                    <input type="date" id="start" name="input" value={{ opportunityManifest["landing_date"] }} min={{ opportunityManifest["landing_date"] }} max={{ opportunityManifest["max_date"] }}>
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" type="submit" name = "submit" value="opportunity">Get Images by Earth Date</button>
+                    <input type="hidden" name="action" value="earthDate">
+                </div>
+
+            </form>
+        </td>
+                <td>
+            <form action="/images" method="POST">
+                <div class="form-group">
+                    Earth Date
+                    <br>
+
+                    <input type="date" id="start" name="input" value="{{curiosityManifest["landing_date"]}}" min={{curiosityManifest["landing_date"]}} max={{ curiosityManifest["max_date"] }}>
+                    <br>
+                    <br>
+                    <button class="btn btn-secondary" type="submit" name = "submit" value="curiosity">Get Images by Earth Date</button>
+                    <input type="hidden" name="action" value="earthDate">
+
+                </div>
+
+            </form>
+        </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                {{suggestion}}
+            </td>
+        </tr>
+
+    </table>
+
+Note: Sol refers to how many Martian days the rover has been on planet. While Sprit and Opportunty are no longer functioning, Curiosity is so it's 'Max Sol' increases by 1 every 1 Day and 37 Minutes on earth.
+{% endblock %}

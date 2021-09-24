@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    View All Images
+{% endblock %}
+
+{% block main %}
+  <table width = 90% class="table table-dark">
+  <thead class="thead-dark">
+  <th colspan="4">
+  {{images[2]["rover"]["name"]}} Rover, {{ images[2]["camera"]["full_name"] }}, Sol {{images[2]["sol"]}}<br>
+  Earth Date: {{images[2]["earth_date"]}}<br>
+  {{((images|length)-2)|int}} Images
+  </th>
+
+  <tr>
+  {% for i in range(2, (images|length)|int) %}
+    {% if (i-2)%4 != 0 %}
+      <td>
+        <div class="img">
+        <a href={{ images[i]["img_src"] }} target="_blank"><img src={{ images[i]["img_src"] }} width = 200px></a>
+        </div>
+        <br>
+        <form action="/viewall" method="POST">
+          <input type="hidden" name="imageid" value={{images[i]["id"]}}>
+          <input type="hidden" name="rover" value={{images[i]["rover"]["name"]}}>
+          <input type="hidden" name="cameraCode" value={{ images[i]["camera"]["name"] }}>
+          <input type="hidden" name="camera" value="{{ images[i]["camera"]["full_name"] }}">
+          <input type="hidden" name="sol" value={{images[i]["sol"]}}>
+          <input type="hidden" name="earthdate" value={{images[i]["earth_date"]}}>
+          <input type="hidden" name="img_src" value={{images[i]["img_src"]}}>
+
+          <button class="btn btn-dark btn-sm" type="submit" name = "submit">Save to Gallery</button></div>
+        </form>
+      </td>
+      {% else %}
+      </tr>
+      <td>
+        <div class="img">
+        <a href={{ images[i]["img_src"] }} target="_blank"> <img src={{ images[i]["img_src"] }} width = 200px></a>
+        </div>
+        <br>
+        <form action="/viewall" method="POST">
+          <input type="hidden" name="imageid" value={{images[i]["id"]}}>
+          <input type="hidden" name="rover" value={{images[i]["rover"]["name"]}}>
+          <input type="hidden" name="camera" value="{{ images[i]["camera"]["full_name"] }}">
+          <input type="hidden" name="sol" value={{images[i]["sol"]}}>
+          <input type="hidden" name="earthdate" value={{images[i]["earth_date"]}}>
+          <input type="hidden" name="img_src" value={{images[i]["img_src"]}}>
+          <input type="hidden" name="submittedFrom" value="viewall">
+
+          <button class="btn btn-dark btn-sm" type="submit" name = "submit"  value={{ images[i]["img_src"] }} >Save to Gallery</button></div>
+        </form>
+      </td>
+      {% endif %}
+  {% endfor %}
+
+{% endblock %}

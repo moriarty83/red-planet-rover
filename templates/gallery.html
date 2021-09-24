@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Gallery
+{% endblock %}
+
+
+{% block main %}
+
+  <table width = 90% class="table table-dark" id="galleryTable">
+  <thead class="thead-dark">  </thead>
+  <tr>
+    <td colspan ="4">
+    Gallery
+    </td>
+  </tr>
+  </thead>
+  <tr>
+  {% for i in range(0, (gallery|length)|int) %}
+    {% if i%4 != 0 %}
+      <td>
+        <div class="img">
+        <a href = {{ gallery[i]["img_src"] }} target="_blank"><img src={{ gallery[i]["img_src"] }} width = 200px></a>
+        <p>
+          {{ gallery[i]["rover"]|capitalize }} Rover,  {{ gallery[i]["camera"]|capitalize }} Camera<br>
+          Sol {{ gallery[i]["sol"] }}<br>
+          {{ gallery[i]["earthdate"] }}
+        </p>
+        </div>
+        <br>
+        <form action="/gallery" method="POST">
+          <input type="hidden" name="imageid" value={{gallery[i]["imageid"]}}>
+          <button class="btn btn-dark btn-sm" type="submit" name = "submit", alt = "{{gallery[i]["rover"]}} rover, {{ gallery[i]["camera"]["full_name"] }} camera, Sol {{gallery[i]["sol"]}} ">Remove</button></div>
+        </form>
+      </td>
+      {% else %}
+      </tr>
+      <tr>
+      <td>
+        <div class="img">
+        <a href = {{ gallery[i]["img_src"] }} target="_blank"><img src={{ gallery[i]["img_src"] }} width = 200px></a>
+        <p>
+          {{ gallery[i]["rover"]|capitalize }} Rover,  {{ gallery[i]["camera"]|capitalize }} Camera<br>
+          Sol {{ gallery[i]["sol"] }}<br>
+          {{ gallery[i]["earthdate"] }}
+        </p>
+        </div>
+        <br>
+        <form action="/gallery" method="POST">
+          <input type="hidden" name="imageid" value={{gallery[i]["imageid"]}}>
+
+          <button class="btn btn-dark btn-sm" type="submit" name = "submit", alt = "{{gallery[i]["rover"]}} rover, {{ gallery[i]["camera"]["full_name"] }} camera, Sol {{gallery[i]["sol"]}} ">Remove</button></div>
+        </form>
+      </td>
+      {% endif %}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block title %}
+    View All Images
+{% endblock %}
+
+{% block main %}
+  <table width = 90% class="table table-striped">
+  <thead class="thead-dark">
+  <th>Photos</th>
+  </thead>
+
+
+  <table width = 90% class="table table-striped">
+  <thead class="thead-dark">  </thead>
+  <tr>
+  {% for i in range(0, (images|length)|int) %}
+    {% if i%4 != 0 %}
+      <td>
+        <div class="img">
+        <img src={{ images[i]["img_src"] }} width = 200px>
+        </div>
+        <br>
+        <form action="/add" imageid={{images[i]["id"]}} rover={{images[i]["rover"]}} camera={{images[i]["camera"]["full_name"]}} sol={{images[i]["sol"]}} earthdater={{images[i]["earth_date"]}} method="POST">
+          <button class="btn btn-dark btn-sm" type="submit" name = "submit"  value={{ images[i]["img_src"] }}  >Save to Gallery</button></div>
+        </form>
+      </td>
+      {% else %}
+      </tr>
+      <td>
+        <div class="img">
+        <img src={{ images[i]["img_src"] }} width = 200px>
+        </div>
+        <br>
+        <form action="/add" imageid={{images[i]["id"]}} rover={{images[i]["rover"]}} camera={{ images[i]["camera"]["full_name"] }} sol={{images[i]["sol"]}} earthdater={{images[i]["earth_date"]}} method="POST">
+          <button class="btn btn-dark btn-sm" type="submit" name = "submit"  value={{ images[i]["img_src"] }} rover={{ images[i]["rover"] }} camera={{ images[i]["camera"]["full_name"]}} sol={{images[i]["sol"]}} earthdate={{images[i]["earth_date"]}} >Save to Gallery</button></div>
+        </form>
+      </td>
+      {% endif %}
+  {% endfor %}
+
+{% endblock %}

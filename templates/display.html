@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Display
+{% endblock %}
+
+{% block main %}
+<table valign="top" class="table table-dark">
+    {% for element in cameras %}
+        {% if element|length > 2 %}
+            <th width="250px">{{ element[0] }}
+            {% if element|length > 22 %}
+                <br>
+                <form action="/display" method="POST">
+                <div class="form-group">
+                    <input type="hidden" name="rover" value={{element[2]["rover"]["name"]}}>
+                    <input type="hidden" name="cameraCode" value={{ element[1] }}>
+                    <input type="hidden" name="sol" value={{element[2]["sol"]}}>
+                    <input type="hidden" name="earthdate" value={{element[2]["earth_date"]}}>
+                    <input type="hidden" name="action" value={{viewall}}>
+                    <input type="hidden" name="input" value={{input}}>
+
+
+                    <button class="btn btn-primary" type="submit" name = "submit">View All {{ element|length-2 }} Images</button></div>
+                </div>
+                </form>
+                </th>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    <tr>
+        {% for element in cameras %}
+            {% if element|length > 2 %}
+                <td valign="top">
+                {% if element|length > 20 %}
+                    {% for i in range(2, element|length, (element|length/20)|int) %}
+                        <div class="img">
+                        <br>
+                        <a href = {{ element[i]["img_src"] }} target="_blank"> <img src={{ element[i]["img_src"] }} class="img" width = 200px> </a>
+                        <br>
+                        <form action="/display" method="POST">
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="imageid" value={{element[i]["id"]}}>
+                        <input type="hidden" name="rover" value={{element[i]["rover"]["name"]}}>
+                        <input type="hidden" name="camera" value="{{ element[i]["camera"]["full_name"] }}">
+                        <input type="hidden" name="sol" value={{element[i]["sol"]}}>
+                        <input type="hidden" name="earthdate" value={{element[i]["earth_date"]}}>
+                        <input type="hidden" name="img_src" value={{element[i]["img_src"]}}>
+                        <input type="hidden" name="submittedFrom" value="display">
+                        <br>
+                        <button class="btn btn-dark btn-sm" type="submit" name = "submit">Save to Gallery</button>
+                        <br>
+                        <br>
+                        </form>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for i in range(2, element|length) %}
+                        <div class="img">
+                        <br>
+                        <a href = {{ element[i]["img_src"] }} target="_blank"> <img src={{ element[i]["img_src"] }} class="img" width = 200px> </a>
+                        <br>
+                        <form action="/display" method="POST">
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="imageid" value={{element[i]["id"]}}>
+                        <input type="hidden" name="rover" value="{{element[i]["rover"]["name"]}}">
+                        <input type="hidden" name="camera" value={{element[i]["camera"]["full_name"] }}>
+                        <input type="hidden" name="sol" value={{element[i]["sol"]}}>
+                        <input type="hidden" name="earthdate" value={{element[i]["earth_date"]}}>
+                        <input type="hidden" name="img_src" value={{element[i]["img_src"]}}>
+                        <br>
+                        <button class="btn btn-dark btn-sm" type="submit" name = "submit">Save to Gallery</button>
+                        <br>
+                        <br>
+                        </form>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <br>
+                </td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+</table>
+
+{% endblock %}

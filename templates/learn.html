@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Learn
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">50 Years of Mars Exploration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <iframe src="https://mars.nasa.gov/layout/embed/video/?v=289" width="640" height="370" scrolling="no" frameborder="0"></iframe>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Martian Weather from  Elysium Planitia<br>
+      <p>Courtesy of to NASA's InSight lander.</p></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width="90%" height='530'  scrolling='no' frameborder='0'></iframe>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th colspan="3">
+      Rovers
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Spirit</th>
+      <th scope="col">Opportunity</th>
+      <th scope="col">Curiosity</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+        <iframe src="https://mars.nasa.gov/layout/embed/video/?v=10" width="100%" scrolling="no" frameborder="0"></iframe>
+    </td>
+    <td>
+      <iframe src="https://mars.nasa.gov/layout/embed/video/?v=412" width="100%" scrolling="no" frameborder="0"></iframe>
+    </td>
+
+    <td>
+      <iframe width="100%" src="https://www.youtube.com/embed/IxvODcuFb1s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="2">Mars 2020</th>
+    </tr>
+  </thead>
+    <tr>
+      <td>
+        Perserverence Rover<br>
+        <iframe src="https://mars.nasa.gov/layout/embed/video/?v=445" width="640" height="370" scrolling="no" frameborder="0"></iframe>          </td>
+      </td>
+      <td>
+        Mission Status
+        <br>
+        <div class="video-wrap"><div id="eyes-embed" class="outerdiv" style="height:400px">
+          <iframe src="https://eyes.nasa.gov/apps/orrery/#/sc_perseverance" style=" border:0px #FFFFFF none;" name="eyes-embed" id="eyes-embed" vspace="0" hspace="0" frameborder="0" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="100%" width="100%">You need a iFrames Capable browser to view this content.</iframe>
+        </div>
+      </td>
+    </tr>
+
+        <tbody>
+  </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Keep Exploring</th>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="center">
+        This site represents a tiny faction of the information and opportunity to discover more about the Red Planet
+        that is available on NASA's <a href = "https://mars.nasa.gov/">Mars Exploration Program</a> site.
+        <br>
+        <br>
+        <a <img href = "https://mars.nasa.gov/"><img src = "static/images/P08-We-Need-You-NASA-Recruitment-Poster.jpg" alt = "NASA We Need You Poster"></a>
+        <br>
+         Please check out the hard work put in by NASA's scientists, engineers, and developers to learn and be insired!
+      </div>
+    </tr>
+</thead>
+        <tbody>
+  </tr>
+  </tbody>
+</table>
+
+{% endblock %}

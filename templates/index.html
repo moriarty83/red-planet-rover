@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+Thanks to NASA's Open APIs, it is a great pleasure to offer the ability to look up any image sent to Earth from NASA's Spirit, Opportunity and Curiosity rovers.
+Register an account or login to be able to save images to your personal Gallery.
+<br>
+<br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Lookup</th>
+      <th scope="col">Register</th>
+      <th scope="col">Login</th>
+      <th scope="col">Learn</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <a href="/images"><img src="static/images/lookupicon.png" alt="lookup icon" width="100px"></a>
+    </td>
+    <td>
+      <a href="/register"><img src="static/images/registericon.png" alt="register icon" width="100px"></a>
+    </td>
+
+    <td>
+      <a href="/login"><img src="static/images/login.png" alt="login icon " width="100px"></a>
+    </td>
+
+    <td>
+      <a href="/learn"><img src="static/images/learnicon.png" alt="login icon" width="100px"></a>
+    </td>
+    </tr>
+    <tr>
+
+    </tr>
+    <tr>
+              <td colspan="4">
+          <br>
+          <br>
+          Over 50 Years of Mars Landings
+        </td>
+    </tr>
+    <tr>
+
+        <td colspan="4">
+            <img src = "static/images/map-mars-landing-sites.png" alt = "Mars Landing Map"><br>
+            <p>
+              Emily Lakdawalla for The Planetary Society. Base maps processed by Patrick McGovern from MOLA data
+            </p>
+
+        </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
